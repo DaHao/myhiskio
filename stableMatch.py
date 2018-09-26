@@ -51,20 +51,19 @@ class Human():
         self.lover = human
 
 class ChineseCupid():
-    manList = []
 
-    def __init__(loveData):
-        for key, value in loveData['man']:
-            man = Human(key, value)
-            manList.append(man)
+    def __init__(self, loveData):
+        self.manList = []
+        for key, value in loveData['man'].items():
+            self.manList.append(Human(key, value))
 
-    def Match():
-        pass
+    def Match(self):
+        pprint(self.manList)
 
 if __name__ == "__main__":
 
     with open('perference.json', 'r') as f:
-        data2 = json.load(f)
+        data = json.load(f)
 
-    print(type(data2))
-    print(type(data2['man']))
+    cc = ChineseCupid(data)
+    cc.Match()
