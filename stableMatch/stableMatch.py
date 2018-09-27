@@ -91,9 +91,7 @@ class ChineseCupid():
         return next(man for man in self.manList + self.womanList if man.name == name)
 
     def findBetterHuman(self, man, name1, name2):
-        index1 = man.loverList.index(name1)
-        index2 = man.loverList.index(name2)
-        return name1 if index1 < index2 else name2
+        return next(name for name in man.loverList if name in [name1, name2])
 
     def match(self):
         while not all(man.status == Relationship.married for man in self.manList):
